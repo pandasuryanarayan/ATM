@@ -1,4 +1,4 @@
-package atmsimulation;
+package atm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +20,12 @@ public class signup3 extends JFrame implements ActionListener{
         setSize(850,800);
         setLocation(350,0);
         setVisible(true);
+        setResizable(false);
         setLocationRelativeTo(null);
+        
+        ImageIcon i5 = new ImageIcon(getClass().getResource("s_icon.png"));
+        Image i4 = i5.getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT);
+        setIconImage(i4);
         
         JLabel l1=new JLabel("Page 3: Account Details");
         l1.setFont(new Font("Raleway",Font.BOLD,22));
@@ -33,12 +38,12 @@ public class signup3 extends JFrame implements ActionListener{
         card.setBounds(100,180,200,30);
         add(card);
         
-        JLabel number=new JLabel("XXXX-XXXX-XXXX-2433");
+        JLabel number=new JLabel("XXXXXXXXXXX4243");
         number.setFont(new Font("Raleway",Font.BOLD,22));
         number.setBounds(330,180,250,30);
         add(number);
         
-        JLabel accountdetail=new JLabel("Your 16 Account Number");
+        JLabel accountdetail=new JLabel("Your 15 Account Number");
         accountdetail.setFont(new Font("Raleway",Font.BOLD,12));
         accountdetail.setBounds(100,210,300,20);
         add(accountdetail);

@@ -1,4 +1,4 @@
-package atmsimulation;
+package atm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +19,13 @@ public class signup1 extends JFrame implements ActionListener{
         setSize(850,800);
         setLocation(300,10);
         setVisible(true);
+        setResizable(false);
         getContentPane().setBackground(Color.WHITE);
         setLocationRelativeTo(null);
+        
+        ImageIcon i5 = new ImageIcon(getClass().getResource("s_icon.png"));
+        Image i4 = i5.getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT);
+        setIconImage(i4);
         
         Random ran=new Random();
         random=Math.abs((ran.nextLong() % 9000L)+ 1000L);
@@ -241,9 +246,8 @@ public class signup1 extends JFrame implements ActionListener{
                 conn c=new conn();
                 String q1 = "insert into signup values('"+formno+"','"+name+"','"+fname+"','"+DOB+"','"+gender+"','"+email+"','"+marital+"','"+address+"','"+city+"','"+pin+"','"+state+"')";
                 c.s.executeUpdate(q1);
-                
                 dispose();
-                new signup2(formno,name);//.setVisible(true);
+                new signup2(formno,name);
             }
          }catch(Exception e){
             System.out.println(e);

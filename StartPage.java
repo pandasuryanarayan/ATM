@@ -1,4 +1,4 @@
-package atmsimulation;
+package atm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,17 +14,20 @@ class StartPage extends JFrame implements ActionListener {
 	
 	StartPage() {
             
-        setTitle("Bank of Surya-ATM");
         setVisible(true);
         setTitle("WELCOME");
         setLayout(null);
+        setResizable(false);
         
-        ImageIcon i1 = new ImageIcon("C:\\Users\\CS\\eclipse-workspace\\surya\\src\\surya\\s logo1.jpg");
+        ImageIcon i5 = new ImageIcon(getClass().getResource("s_icon.png"));
+        Image i4 = i5.getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT);
+        setIconImage(i4);
+        
+        ImageIcon i1 = new ImageIcon(getClass().getResource("s_logo.jpg"));
         Image i2 = i1.getImage().getScaledInstance(800, 500, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
         image.setBounds(0,0,800,500);
-        
         
        l1 = new JLabel("Welcome");
        l1.setBounds(350,30,150,100);

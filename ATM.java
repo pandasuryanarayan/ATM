@@ -1,8 +1,9 @@
-package atmsimulation;
+package atm;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 import java.sql.*;
 
  class ATM extends JFrame implements ActionListener {
@@ -19,8 +20,13 @@ import java.sql.*;
 	    	setVisible(true);
 	        setTitle("Bank of Surya-ATM");
 	        setLayout(null);
+	        setResizable(false);
 	        
-	        ImageIcon i1 = new ImageIcon("C:\\Users\\CS\\eclipse-workspace\\surya\\src\\surya\\s logo1.jpg");
+	        ImageIcon i5 = new ImageIcon(getClass().getResource("s_icon.png"));
+	        Image i4 = i5.getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT);
+	        setIconImage(i4);
+	        
+	        ImageIcon i1 = new ImageIcon(getClass().getResource("s_logo.jpg"));
 	        Image i2 = i1.getImage().getScaledInstance(800, 500, Image.SCALE_DEFAULT);
 	        ImageIcon i3 = new ImageIcon(i2);
 	        JLabel image = new JLabel(i3);
@@ -121,6 +127,7 @@ import java.sql.*;
 			withB.setEnabled(false);
 			transB.setEnabled(false);
 			depositB.setEnabled(false);
+			loginB.setEnabled(false);
 			
 			add(image);
 			
@@ -136,6 +143,41 @@ import java.sql.*;
 	        setLocation(550, 200);
 	        setLocationRelativeTo(null);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        
+	     // Add DocumentListener to accE and pinE
+	        accE.getDocument().addDocumentListener(new DocumentListener() {
+	            @Override
+	            public void insertUpdate(DocumentEvent e) {
+	                checkLoginButton();
+	            }
+
+	            @Override
+	            public void removeUpdate(DocumentEvent e) {
+	                checkLoginButton();
+	            }
+
+	            @Override
+	            public void changedUpdate(DocumentEvent e) {
+	                checkLoginButton();
+	            }
+	        });
+
+	        pinE.getDocument().addDocumentListener(new DocumentListener() {
+	            @Override
+	            public void insertUpdate(DocumentEvent e) {
+	                checkLoginButton();
+	            }
+
+	            @Override
+	            public void removeUpdate(DocumentEvent e) {
+	                checkLoginButton();
+	            }
+
+	            @Override
+	            public void changedUpdate(DocumentEvent e) {
+	                checkLoginButton();
+	            }
+	        });
 
 	    }
 	    
@@ -165,9 +207,22 @@ import java.sql.*;
 			}
 		}
 	 
+	// Method to check and enable loginB button
+     public void checkLoginButton() {
+         String accountNumber = accE.getText();
+         String pin = new String(pinE.getPassword());
+         
+         if (accountNumber.length() == 15 && pin.length() == 4) {
+             loginB.setEnabled(true);
+         } else {
+             loginB.setEnabled(false);
+         }
+     }
+
 	 public void login() {
 		 String accountNumber = accE.getText();
 		 String Pin = String.valueOf(pinE.getPassword());
+		 
 		 String q1 = "select Account_Number,PIN from login where PIN='"+Pin+"';";
 		 try {
 			 conn c = new conn();

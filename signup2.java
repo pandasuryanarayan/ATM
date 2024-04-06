@@ -1,4 +1,4 @@
-package atmsimulation;
+package atm;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,9 +19,14 @@ public class signup2 extends JFrame implements ActionListener{
         setSize(850,800);
         setLocation(300,10);
         setVisible(true);
+        setResizable(false);
         getContentPane().setBackground(Color.WHITE);
         setLocationRelativeTo(null);
         setTitle("NEW ACCOUNT APPLICATION FORM -PAGE 2");
+        
+        ImageIcon i5 = new ImageIcon(getClass().getResource("s_icon.png"));
+        Image i4 = i5.getImage().getScaledInstance(900, 700, Image.SCALE_DEFAULT);
+        setIconImage(i4);
         
 //        Personal Details
         JLabel additionalDetails=new JLabel("Page 2:  Additional Details");
