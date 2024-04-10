@@ -250,10 +250,10 @@ import java.sql.*;
 		        return;
 		    }
 
-		    String q1 = "select count(*) as count from customer_details where Account_Number='" + accountNumber + "';";
-		    String q2 = "update customer_details set balance = ";
-		    String q3 = "insert into customer_details values ('" + accountNumber + "','" + amount + "');";
-		    String q4 = "select balance as total_balance from customer_details where Account_Number='" + accountNumber + "';";
+		    String q1 = "select count(*) as count from account_details where Account_Number='" + accountNumber + "';";
+		    String q2 = "update account_details set balance = ";
+		    String q3 = "insert into account_details values ('" + accountNumber + "','" + amount + "');";
+		    String q4 = "select balance as total_balance from account_details where Account_Number='" + accountNumber + "';";
 
 		    try {
 		        conn c = new conn();
@@ -285,7 +285,7 @@ import java.sql.*;
 	 
 	 public void checkBalance() {
 		 String accountNumber = accE.getText();
-		 String q1 = "select balance as total_balance from customer_details where Account_Number='"+accountNumber+"';";
+		 String q1 = "select balance as total_balance from account_details where Account_Number='"+accountNumber+"';";
 		 try {
 			 conn c = new conn();
 			 ResultSet rs = c.s.executeQuery(q1);
@@ -304,8 +304,8 @@ import java.sql.*;
 	 public void withdraw() {
 		 String accountNumber = accE.getText();
 		 int amount = askAmount("Enter the Withdrawal Amount");
-		 String q1 = "select balance as total_balance from customer_details where Account_Number='"+accountNumber+"';";
-		 String q2 = "update customer_details set balance = ";
+		 String q1 = "select balance as total_balance from account_details where Account_Number='"+accountNumber+"';";
+		 String q2 = "update account_details set balance = ";
 		 try {
 			 conn c = new conn();
 			 ResultSet rs = c.s.executeQuery(q1);
@@ -350,8 +350,8 @@ import java.sql.*;
 		        return;
 		    }
 		 int amount = askAmount("Enter the transfer amount");
-		 String q1 = "select balance as total_balance from customer_details where Account_Number='"+accountNumber+"';";
-		 String q2 = "update customer_details set balance = ";
+		 String q1 = "select balance as total_balance from account_details where Account_Number='"+accountNumber+"';";
+		 String q2 = "update account_details set balance = ";
 		 try {
 			 conn c = new conn();
 			 ResultSet rs = c.s.executeQuery(q1);
@@ -385,9 +385,6 @@ import java.sql.*;
 	 public void showMessage(String message) {
 		 JOptionPane.showMessageDialog(this,message, "Automated Teller Machine", JOptionPane.INFORMATION_MESSAGE);
 	 }
-
-
-
 
 
 

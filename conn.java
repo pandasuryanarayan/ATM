@@ -15,13 +15,13 @@ public class conn {
             c = DriverManager.getConnection(url, username, password);
             s = c.createStatement();
 
-            // Check if signup and signuptwo tables exist
+            // Check if these tables exist
             DatabaseMetaData dbm = c.getMetaData();
             ResultSet signupTable = dbm.getTables(null, null, "signup", null);
             ResultSet signuptwoTable = dbm.getTables(null, null, "signuptwo", null);
             ResultSet signupthree = dbm.getTables(null, null, "signupthree", null);
             ResultSet login = dbm.getTables(null, null, "login", null);
-            ResultSet customer_details = dbm.getTables(null, null, "customer_details", null);
+            ResultSet account_details = dbm.getTables(null, null, "account_details", null);
 
             if (!signupTable.next()) {
                 // signup table doesn't exist, create it
@@ -47,10 +47,10 @@ public class conn {
                 s.executeUpdate(createloginTableQuery);
             }
             
-            if (!customer_details.next()) {
+            if (!account_details.next()) {
                 // login table doesn't exist, create it
-                String createcustomer_detailsTableQuery = "create table customer_details (Account_Number varchar(255), balance int)";
-                s.executeUpdate(createcustomer_detailsTableQuery);
+                String createaccount_detailsTableQuery = "create table account_details (Account_Number varchar(255), balance int)";
+                s.executeUpdate(createaccount_detailsTableQuery);
             }
         } catch (Exception e) {
             System.out.println(e);
